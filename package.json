@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sql": "node ./mysql/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,8 @@
   "dependencies": {
     "https": "^1.0.0",
     "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",
     "mysql": "^2.15.0"
   }
