@@ -169,7 +169,7 @@ router.post('/addCollection', async (ctx) => {
   let create_time = new Date().getTime()
   let primaryId = await getPrimaryId(sessionId)
   if (primaryId) {
-    let searchSql = `select product_id from collection where user_id = '${primaryId}'`
+    let searchSql = `select product_id from collection where user_id = '${primaryId}' and product_id=${productId}`
     let res = await query(searchSql)
     if (!res.length) {
       let sql = `insert into collection (user_id, product_id, create_time) values ('${primaryId}', ${productId}, ${create_time})`
