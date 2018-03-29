@@ -213,4 +213,26 @@ router.get('/getCollections', async (ctx) => {
     }
   }
 })
+
+router.post('/delCollection', async (ctx) => {
+  let sessionId = ctx.request.body.sessionId.toString()
+  let productId = ctx.request.body.productId
+  let primaryId = await getPrimaryId(sessionId)
+  if (primaryId) {
+    let sql = `delete from collection where user_id='${primaryId}' and product_id=${productId}`
+    await query(sql)
+    ctx.body = {
+      code: 0,
+      data: {
+        msg: 'ok'
+      }
+    }
+  } else {
+    ctx.status = 401
+    ctx.body = {
+      code: 401,
+      data: '登录出错'
+    }
+  }
+})
 module.exports = router
