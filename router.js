@@ -10,7 +10,28 @@ var redis = require("redis"),
   client = redis.createClient(6379,'127.0.0.1',{});
 
 router.get('/getProductList', async ( ctx )=>{
+  let order = ctx.query.order
+  let search = ctx.query.search
+  let classMenu = ctx.query.classMenu
   let sql = 'SELECT * FROM product'
+  if (search) {
+    sql += ` where name like '%${search}%'`
+  }
+  if (classMenu) {
+    sql += ` where classMenu='${classMenu}'`
+  }
+
+  switch (order) {
+    case 'time-asc':
+      sql += ' order by create_time desc'
+      break;
+    case 'price-asc':
+      sql += ' order by price asc'
+      break;
+    case 'price-desc':
+      sql += ' order by price desc'
+      break;
+  }
   let result = await query(sql)
   let hostList = []
   let newList = []

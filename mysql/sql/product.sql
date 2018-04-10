@@ -12,3 +12,5 @@ CREATE TABLE IF NOT EXISTS  `product`(
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8;
 INSERT INTO product (name,price,sales,origin,description,create_time, tag, mainImg) VALUES ('口红',100,8,'france','来自法国的口红',1519646501732, 1, 'https://img.alicdn.com/imgextra/i2/2549841410/TB2wLOsxUhnpuFjSZFEXXX0PFXa_!!2549841410.jpg_430x430q90.jpg');
+alter table product add classMenu varchar(100) default 'cz';
+alter table product add freight bigint(20) default 0;
