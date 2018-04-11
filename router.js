@@ -67,7 +67,7 @@ router.get('/getBanner', async ( ctx )=>{
 router.post('/addProduct', async (ctx) => {
   let postData = ctx.request.body
   let create_time = (new Date().getTime()).toString()
-  let sql = `INSERT INTO product (name,price,sales,origin,description,create_time, tag, mainImg, detailImg) VALUES ('${postData.name}',${postData.price},0,'${postData.origin}','${postData.description}',${create_time} , ${postData.tag}, '${postData.mainImg}', '${postData.detailImg}');`
+  let sql = `INSERT INTO product (name,price,sales,origin,description,create_time, tag, mainImg, detailImg, classMenu, freight) VALUES ('${postData.name}',${postData.price},0,'${postData.origin}','${postData.description}',${create_time} , ${postData.tag}, '${postData.mainImg}', '${postData.detailImg}', '${postData.classMenu}', '${postData.freight}');`
   try {
     let result = await query(sql)
     ctx.body = {
