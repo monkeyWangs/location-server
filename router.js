@@ -10,7 +10,7 @@ var redis = require("redis"),
   client = redis.createClient(6379,'127.0.0.1',{});
 
 router.get('/getProductList', async ( ctx )=>{
-  let order = ctx.query.order
+  let order = ctx.query.order || 'time-asc'
   let search = ctx.query.search
   let classMenu = ctx.query.classMenu
   let sql = 'SELECT * FROM product'
