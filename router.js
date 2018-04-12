@@ -56,8 +56,10 @@ router.get('/getProductList', async ( ctx )=>{
 })
 
 router.get('/getBanner', async ( ctx )=>{
+  console.log(111)
   let sql = 'SELECT * FROM product where tag=1'
   let result = await query(sql)
+  console.log(222)
   ctx.body = {
     code: 0,
     data: result
@@ -105,7 +107,6 @@ router.post('/deleteProduct', async (ctx) => {
 router.get('/productDetail', async (ctx) => {
   let id = ctx.query.id
   let sql = `select * FROM product WHERE id=${id}`
-  console.log(sql)
   try {
     let result = await query(sql)
     ctx.body = {
