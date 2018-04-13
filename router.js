@@ -257,4 +257,15 @@ router.post('/delCollection', async (ctx) => {
     }
   }
 })
+
+router.get('/getUserList', async (ctx) => {
+  let sql = 'select nick_name,city,country,avatarUrl,gender,province from users'
+  let result = await query(sql)
+  ctx.body = {
+    code: 0,
+    data: {
+      data: result
+    }
+  }
+})
 module.exports = router
